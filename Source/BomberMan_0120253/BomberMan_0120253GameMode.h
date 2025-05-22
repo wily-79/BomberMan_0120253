@@ -22,10 +22,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	//UPROPERTY(EditAnywhere, Category = "Laberinto")
+	UPROPERTY(EditAnywhere, Category = "Laberinto")
 	TSubclassOf<ALaberintoAleatorioBuilder> BuilderClass;
 
-	//UPROPERTY(EditAnywhere, Category = "Laberinto")
+	UPROPERTY(EditAnywhere, Category = "Laberinto")
 	TSubclassOf<ALaberintoDirector> DirectorClass;
 };
 

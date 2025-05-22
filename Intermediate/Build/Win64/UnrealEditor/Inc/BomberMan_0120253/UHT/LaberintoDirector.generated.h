@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BOMBERMAN_0120253_LaberintoDirector_generated_h
 
-#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesALaberintoDirector(); \
 	friend struct Z_Construct_UClass_ALaberintoDirector_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(ALaberintoDirector)
 
 
-#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ALaberintoDirector(ALaberintoDirector&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~ALaberintoDirector();
 
 
-#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_10_PROLOG
-#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_GENERATED_BODY \
+#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_PROLOG
+#define FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_16_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoDirector_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -2,6 +2,9 @@
 
 
 #include "LaberintoAleatorioBuilder.h"
+#include "BloqueAcero.h"
+#include "BloqueConcreto.h"
+#include "BloqueLadrillo.h"
 
 // Sets default values
 ALaberintoAleatorioBuilder::ALaberintoAleatorioBuilder()
@@ -9,28 +12,31 @@ ALaberintoAleatorioBuilder::ALaberintoAleatorioBuilder()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+    Ancho = 15;
+    Alto = 13;
+    TamanoBloque = 100.f;
+
+    ClaseBloqueAcero = ABloqueAcero::StaticClass();
+    ClaseBloqueConcreto = ABloqueConcreto::StaticClass();
+    ClaseBloqueLadrillo = ABloqueLadrillo::StaticClass();
 }
 
-void ALaberintoAleatorioBuilder::CrearMapa(int32 Ancho, int32 Alto)
+void ALaberintoAleatorioBuilder::CrearMapa()
 {
-	MapaAlto = Alto;
-	MapaAncho = Ancho;
 	Laberinto.Empty();
-	PosicionesOcupadas.Empty();
 }
 
 void ALaberintoAleatorioBuilder::ConstruirBordes()
 {
-    for (int32 x = 0; x < MapaAncho; ++x)
+    for (int x = 0; x < Ancho; ++x)
     {
-        for (int32 y = 0; y < MapaAlto; ++y)
+        for (int y = 0; y < Alto; ++y)
         {
-            if (x == 0 || y == 0 || x == MapaAncho - 1 || y == MapaAlto - 1)
+            if (x == 0 || y == 0 || x == Ancho - 1 || y == Alto - 1)
             {
-                FVector Pos = FVector(x * TamanoBloque, y * TamanoBloque, 0);
-                InstanciarBloque(BloqueAcero, Pos);
-                Laberinto.Add(Pos);
-                PosicionesOcupadas.Add(Pos);
+                FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
+                InstanciarBloque(ClaseBloqueAcero, Posicion);
+                Laberinto.Add(Posicion);
             }
         }
     }
@@ -38,30 +44,28 @@ void ALaberintoAleatorioBuilder::ConstruirBordes()
 
 void ALaberintoAleatorioBuilder::ConstruirBloquesFijos()
 {
-    for (int32 x = 2; x < MapaAncho - 2; x += 2)
+    for (int x = 2; x < Ancho - 2; x += 2)
     {
-        for (int32 y = 2; y < MapaAlto - 2; y += 2)
+        for (int y = 2; y < Alto - 2; y += 2)
         {
-            FVector Pos = FVector(x * TamanoBloque, y * TamanoBloque, 0);
-            InstanciarBloque(BloqueConcreto, Pos);
-            Laberinto.Add(Pos);
-            PosicionesOcupadas.Add(Pos);
+            FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
+            InstanciarBloque(ClaseBloqueConcreto, Posicion);
+            Laberinto.Add(Posicion);
         }
     }
 }
 
 void ALaberintoAleatorioBuilder::ConstruirBloquesAleatorios()
 {
-    for (int32 x = 1; x < MapaAncho - 1; ++x)
+    for (int x = 1; x < Ancho - 1; ++x)
     {
-        for (int32 y = 1; y < MapaAlto - 1; ++y)
+        for (int y = 1; y < Alto - 1; ++y)
         {
-            FVector Pos = FVector(x * TamanoBloque, y * TamanoBloque, 0);
-            if (!PosicionesOcupadas.Contains(Pos) && FMath::RandRange(0, 100) < 50)
+            FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
+            if (!Laberinto.Contains(Posicion) && FMath::FRand() < 0.5f)
             {
-                InstanciarBloque(BloqueLadrillo, Pos);
-                Laberinto.Add(Pos);
-                PosicionesOcupadas.Add(Pos);
+                InstanciarBloque(ClaseBloqueLadrillo, Posicion);
+                Laberinto.Add(Posicion);
             }
         }
     }
@@ -69,15 +73,15 @@ void ALaberintoAleatorioBuilder::ConstruirBloquesAleatorios()
 
 void ALaberintoAleatorioBuilder::CrearEspaciosParaJugadores()
 {
-    TArray<FVector> PosicionesIniciales = {
-    FVector(1 * TamanoBloque, 1 * TamanoBloque, 0),
-    FVector(1 * TamanoBloque, 2 * TamanoBloque, 0),
-    FVector(2 * TamanoBloque, 1 * TamanoBloque, 0)
+    TArray<FVector> Posiciones = {
+        FVector(1 * TamanoBloque, 1 * TamanoBloque, 0.f),
+        FVector(1 * TamanoBloque, 2 * TamanoBloque, 0.f),
+        FVector(2 * TamanoBloque, 1 * TamanoBloque, 0.f)
     };
 
-    for (const FVector& Pos : PosicionesIniciales)
+    for (const FVector& Pos : Posiciones)
     {
-        PosicionesOcupadas.Remove(Pos);
+        Laberinto.Remove(Pos);
     }
 }
 
@@ -102,12 +106,10 @@ void ALaberintoAleatorioBuilder::Tick(float DeltaTime)
 
 void ALaberintoAleatorioBuilder::InstanciarBloque(UClass* ClaseBloque, const FVector& Posicion)
 {
+    if (!ClaseBloque) return;
+
     GetWorld()->SpawnActor<AActor>(ClaseBloque, Posicion, FRotator::ZeroRotator);
 
 }
 
-bool ALaberintoAleatorioBuilder::EsCeldaLibre(const FVector& Posicion) const
-{
-	return false;
-}
 

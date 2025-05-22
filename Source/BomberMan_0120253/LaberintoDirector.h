@@ -7,6 +7,9 @@
 #include "LaberintoBuilder.h"
 #include "LaberintoDirector.generated.h"
 
+class ILaberintoBuilder;
+
+
 UCLASS()
 class BOMBERMAN_0120253_API ALaberintoDirector : public AActor
 {
@@ -26,7 +29,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	ILaberintoBuilder* Builder = nullptr;
-	int32 AnchoMapa = 13;
-	int32 AltoMapa = 11;
+	ILaberintoBuilder* Builder;
+
 };

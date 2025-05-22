@@ -20,7 +20,7 @@ public:
 	// Sets default values for this actor's properties
 	ALaberintoAleatorioBuilder();
 
-	virtual void CrearMapa(int32 Ancho, int32 Alto) override;
+	virtual void CrearMapa() override;
 	virtual void ConstruirBordes() override;
 	virtual void ConstruirBloquesFijos() override;
 	virtual void ConstruirBloquesAleatorios() override;
@@ -31,14 +31,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere, Category = "Configuración de Bloques")
-	TSubclassOf<AActor> BloqueAcero;
-
-	UPROPERTY(EditAnywhere, Category = "Configuración de Bloques")
-	TSubclassOf<AActor> BloqueConcreto;
-
-	UPROPERTY(EditAnywhere, Category = "Configuración de Bloques")
-	TSubclassOf<AActor> BloqueLadrillo;
 
 public:	
 	// Called every frame
@@ -46,13 +38,19 @@ public:
 
 private:
 
-	int32 MapaAncho;
-	int32 MapaAlto;
-	float TamanoBloque = 100.0f;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ClaseBloqueAcero;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ClaseBloqueConcreto;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ClaseBloqueLadrillo;
+
+	int32 Ancho;
+	int32 Alto;
+	float TamanoBloque;
 	TArray<FVector> Laberinto;
-	TArray<FVector> PosicionesOcupadas;
 
 	void InstanciarBloque(UClass* ClaseBloque, const FVector& Posicion);
-	bool EsCeldaLibre(const FVector& Posicion) const;
 };

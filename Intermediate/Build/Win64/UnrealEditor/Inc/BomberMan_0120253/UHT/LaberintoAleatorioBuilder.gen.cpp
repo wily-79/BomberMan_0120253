@@ -35,22 +35,22 @@ struct Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics
 		{ "IncludePath", "LaberintoAleatorioBuilder.h" },
 		{ "ModuleRelativePath", "LaberintoAleatorioBuilder.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BloqueAcero_MetaData[] = {
-		{ "Category", "Configuraci\xef\xbf\xbdn de Bloques" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ClaseBloqueAcero_MetaData[] = {
+		{ "Category", "LaberintoAleatorioBuilder" },
 		{ "ModuleRelativePath", "LaberintoAleatorioBuilder.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BloqueConcreto_MetaData[] = {
-		{ "Category", "Configuraci\xef\xbf\xbdn de Bloques" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ClaseBloqueConcreto_MetaData[] = {
+		{ "Category", "LaberintoAleatorioBuilder" },
 		{ "ModuleRelativePath", "LaberintoAleatorioBuilder.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BloqueLadrillo_MetaData[] = {
-		{ "Category", "Configuraci\xef\xbf\xbdn de Bloques" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ClaseBloqueLadrillo_MetaData[] = {
+		{ "Category", "LaberintoAleatorioBuilder" },
 		{ "ModuleRelativePath", "LaberintoAleatorioBuilder.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FClassPropertyParams NewProp_BloqueAcero;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_BloqueConcreto;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_BloqueLadrillo;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ClaseBloqueAcero;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ClaseBloqueConcreto;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ClaseBloqueLadrillo;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
@@ -59,13 +59,13 @@ struct Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueAcero = { "BloqueAcero", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, BloqueAcero), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BloqueAcero_MetaData), NewProp_BloqueAcero_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueConcreto = { "BloqueConcreto", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, BloqueConcreto), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BloqueConcreto_MetaData), NewProp_BloqueConcreto_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueLadrillo = { "BloqueLadrillo", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, BloqueLadrillo), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BloqueLadrillo_MetaData), NewProp_BloqueLadrillo_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueAcero = { "ClaseBloqueAcero", nullptr, (EPropertyFlags)0x0044000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, ClaseBloqueAcero), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClaseBloqueAcero_MetaData), NewProp_ClaseBloqueAcero_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueConcreto = { "ClaseBloqueConcreto", nullptr, (EPropertyFlags)0x0044000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, ClaseBloqueConcreto), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClaseBloqueConcreto_MetaData), NewProp_ClaseBloqueConcreto_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueLadrillo = { "ClaseBloqueLadrillo", nullptr, (EPropertyFlags)0x0044000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALaberintoAleatorioBuilder, ClaseBloqueLadrillo), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClaseBloqueLadrillo_MetaData), NewProp_ClaseBloqueLadrillo_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueAcero,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueConcreto,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_BloqueLadrillo,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueAcero,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueConcreto,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::NewProp_ClaseBloqueLadrillo,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ALaberintoAleatorioBuilder_Statics::DependentSingletons[])() = {
@@ -111,10 +111,10 @@ ALaberintoAleatorioBuilder::~ALaberintoAleatorioBuilder() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoAleatorioBuilder_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ALaberintoAleatorioBuilder, ALaberintoAleatorioBuilder::StaticClass, TEXT("ALaberintoAleatorioBuilder"), &Z_Registration_Info_UClass_ALaberintoAleatorioBuilder, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALaberintoAleatorioBuilder), 3679268277U) },
+		{ Z_Construct_UClass_ALaberintoAleatorioBuilder, ALaberintoAleatorioBuilder::StaticClass, TEXT("ALaberintoAleatorioBuilder"), &Z_Registration_Info_UClass_ALaberintoAleatorioBuilder, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALaberintoAleatorioBuilder), 3308342589U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoAleatorioBuilder_h_2014833906(TEXT("/Script/BomberMan_0120253"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoAleatorioBuilder_h_2683180655(TEXT("/Script/BomberMan_0120253"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoAleatorioBuilder_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_BomberMan_0120253_Source_BomberMan_0120253_LaberintoAleatorioBuilder_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

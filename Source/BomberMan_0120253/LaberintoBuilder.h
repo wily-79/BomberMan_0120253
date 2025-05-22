@@ -24,7 +24,7 @@ class BOMBERMAN_0120253_API ILaberintoBuilder
 public:
 	//virtual ~ILaberintoBuilder() = default;
 
-	virtual void CrearMapa(int32 Ancho, int32 Alto) = 0;
+	virtual void CrearMapa() = 0;
 	virtual void ConstruirBordes() = 0;
 	virtual void ConstruirBloquesFijos() = 0;
 	virtual void ConstruirBloquesAleatorios() = 0;
