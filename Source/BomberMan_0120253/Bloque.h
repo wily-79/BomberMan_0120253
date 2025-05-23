@@ -17,12 +17,12 @@ public:
 	// Sets default values for this actor's properties
 	ABloque();
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	UStaticMeshComponent* MallaBloque;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* MallaBloque;
 
 public:
 	// Called every frame

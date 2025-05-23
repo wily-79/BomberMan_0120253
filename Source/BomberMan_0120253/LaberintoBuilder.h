@@ -22,13 +22,8 @@ class BOMBERMAN_0120253_API ILaberintoBuilder
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	//virtual ~ILaberintoBuilder() = default;
-
 	virtual void CrearMapa() = 0;
-	virtual void ConstruirBordes() = 0;
-	virtual void ConstruirBloquesFijos() = 0;
-	virtual void ConstruirBloquesAleatorios() = 0;
-	virtual void CrearEspaciosParaJugadores() = 0;
 
+	// Opcional: si necesitas acceder al mapa generado
 	virtual TArray<FVector> ObtenerLaberinto() const = 0;
 };

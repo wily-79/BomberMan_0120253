@@ -10,106 +10,109 @@
 ALaberintoAleatorioBuilder::ALaberintoAleatorioBuilder()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-    Ancho = 15;
-    Alto = 13;
-    TamanoBloque = 100.f;
+	PrimaryActorTick.bCanEverTick = false;
 
     ClaseBloqueAcero = ABloqueAcero::StaticClass();
     ClaseBloqueConcreto = ABloqueConcreto::StaticClass();
     ClaseBloqueLadrillo = ABloqueLadrillo::StaticClass();
-}
 
-void ALaberintoAleatorioBuilder::CrearMapa()
-{
-	Laberinto.Empty();
-}
-
-void ALaberintoAleatorioBuilder::ConstruirBordes()
-{
-    for (int x = 0; x < Ancho; ++x)
-    {
-        for (int y = 0; y < Alto; ++y)
-        {
-            if (x == 0 || y == 0 || x == Ancho - 1 || y == Alto - 1)
-            {
-                FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
-                InstanciarBloque(ClaseBloqueAcero, Posicion);
-                Laberinto.Add(Posicion);
-            }
-        }
-    }
-}
-
-void ALaberintoAleatorioBuilder::ConstruirBloquesFijos()
-{
-    for (int x = 2; x < Ancho - 2; x += 2)
-    {
-        for (int y = 2; y < Alto - 2; y += 2)
-        {
-            FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
-            InstanciarBloque(ClaseBloqueConcreto, Posicion);
-            Laberinto.Add(Posicion);
-        }
-    }
-}
-
-void ALaberintoAleatorioBuilder::ConstruirBloquesAleatorios()
-{
-    for (int x = 1; x < Ancho - 1; ++x)
-    {
-        for (int y = 1; y < Alto - 1; ++y)
-        {
-            FVector Posicion = FVector(x * TamanoBloque, y * TamanoBloque, 0.f);
-            if (!Laberinto.Contains(Posicion) && FMath::FRand() < 0.5f)
-            {
-                InstanciarBloque(ClaseBloqueLadrillo, Posicion);
-                Laberinto.Add(Posicion);
-            }
-        }
-    }
-}
-
-void ALaberintoAleatorioBuilder::CrearEspaciosParaJugadores()
-{
-    TArray<FVector> Posiciones = {
-        FVector(1 * TamanoBloque, 1 * TamanoBloque, 0.f),
-        FVector(1 * TamanoBloque, 2 * TamanoBloque, 0.f),
-        FVector(2 * TamanoBloque, 1 * TamanoBloque, 0.f)
-    };
-
-    for (const FVector& Pos : Posiciones)
-    {
-        Laberinto.Remove(Pos);
-    }
-}
-
-TArray<FVector> ALaberintoAleatorioBuilder::ObtenerLaberinto() const
-{
-	return TArray<FVector>();
+    AnchoBloque = 100.f;
+    LargoBloque = 100.f;
+    XInicial = 500.f;
+    YInicial = 500.f;
 }
 
 // Called when the game starts or when spawned
 void ALaberintoAleatorioBuilder::BeginPlay()
 {
-	Super::BeginPlay();
-	
+    Super::BeginPlay();
+
 }
 
 // Called every frame
 void ALaberintoAleatorioBuilder::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+    Super::Tick(DeltaTime);
 
 }
 
-void ALaberintoAleatorioBuilder::InstanciarBloque(UClass* ClaseBloque, const FVector& Posicion)
+
+
+void ALaberintoAleatorioBuilder::CrearMapa()
 {
-    if (!ClaseBloque) return;
+    const int32 limiteX = 10;
+    const int32 limiteY = 10;
 
-    GetWorld()->SpawnActor<AActor>(ClaseBloque, Posicion, FRotator::ZeroRotator);
+    aMapaBloques.Empty();
+    aMapaBloques.SetNum(limiteY);
 
+    for (int32 fila = 0; fila < limiteY; ++fila)
+    {
+        aMapaBloques[fila].SetNum(limiteX);
+
+        for (int32 columna = 0; columna < limiteX; ++columna)
+        {
+            if (fila == 0 || fila == limiteY - 1 || columna == 0 || columna == limiteX - 1)
+            {
+                aMapaBloques[fila][columna] = 1; // Borde (bloque de acero)
+            }
+            else
+            {
+                int32 valorAleatorio;
+                do
+                {
+                    valorAleatorio = FMath::RandRange(0, 3);
+                } while (valorAleatorio == 1);
+
+                aMapaBloques[fila][columna] = valorAleatorio;
+            }
+        }
+    }
+
+    for (int32 fila = 0; fila < aMapaBloques.Num(); ++fila)
+    {
+        for (int32 columna = 0; columna < aMapaBloques[fila].Num(); ++columna)
+        {
+            int32 valor = aMapaBloques[fila][columna];
+
+            FVector posicionBloque = FVector(
+                XInicial + columna * AnchoBloque,
+                YInicial + fila * LargoBloque,
+                20.0f);
+
+            SpawnBloque(posicionBloque, valor);
+        }
+    }
 }
+
+void ALaberintoAleatorioBuilder::SpawnBloque(const FVector& Posicion, int32 TipoBloque)
+{
+    UWorld* World = GetWorld();
+    if (!World) return;
+
+    switch (TipoBloque)
+    {
+    case 0:
+    case 1:
+        World->SpawnActor<AActor>(ClaseBloqueAcero, Posicion, FRotator::ZeroRotator);
+        break;
+    case 2:
+        World->SpawnActor<AActor>(ClaseBloqueLadrillo, Posicion, FRotator::ZeroRotator);
+        break;
+    case 3:
+        World->SpawnActor<AActor>(ClaseBloqueConcreto, Posicion, FRotator::ZeroRotator);
+        break;
+    default:
+        break;
+    }
+}
+
+TArray<FVector> ALaberintoAleatorioBuilder::ObtenerLaberinto() const
+{
+    return {};
+}
+
+
+
 
 

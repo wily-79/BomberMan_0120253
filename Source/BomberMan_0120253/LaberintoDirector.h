@@ -7,9 +7,6 @@
 #include "LaberintoBuilder.h"
 #include "LaberintoDirector.generated.h"
 
-class ILaberintoBuilder;
-
-
 UCLASS()
 class BOMBERMAN_0120253_API ALaberintoDirector : public AActor
 {
@@ -19,16 +16,14 @@ public:
 	// Sets default values for this actor's properties
 	ALaberintoDirector();
 
-	void ConstruirLaberinto();
 	void SetBuilder(ILaberintoBuilder* NuevoBuilder);
+	void ConstruirLaberinto();
 
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 	ILaberintoBuilder* Builder;
 
 };

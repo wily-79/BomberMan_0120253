@@ -21,10 +21,6 @@ public:
 	ALaberintoAleatorioBuilder();
 
 	virtual void CrearMapa() override;
-	virtual void ConstruirBordes() override;
-	virtual void ConstruirBloquesFijos() override;
-	virtual void ConstruirBloquesAleatorios() override;
-	virtual void CrearEspaciosParaJugadores() override;
 	virtual TArray<FVector> ObtenerLaberinto() const override;
 
 protected:
@@ -45,12 +41,14 @@ private:
 	TSubclassOf<AActor> ClaseBloqueConcreto;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<AActor> ClaseBloqueLadrillo;
+	TSubclassOf<AActor> ClaseBloqueLadrillo; 
 
-	int32 Ancho;
-	int32 Alto;
-	float TamanoBloque;
-	TArray<FVector> Laberinto;
+	int32 AnchoBloque;
+	int32 LargoBloque;
+	int32 XInicial;
+	int32 YInicial;
 
-	void InstanciarBloque(UClass* ClaseBloque, const FVector& Posicion);
+	TArray<TArray<int32>> aMapaBloques;
+
+	void SpawnBloque(const FVector& Posicion, int32 TipoBloque);
 };
